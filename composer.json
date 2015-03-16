@@ -25,7 +25,7 @@
         "symfony/framework-bundle": "~2.3",
         "symfony/twig-bundle": "~2.3",
         "knplabs/knp-paginator-bundle": "~2.4",
-        "sleepness/uber-translation-bundle": "dev"
+        "sleepness/uber-translation-bundle": "@dev"
     },
     "autoload" : {
         "psr-0" : { "Sleepness\\UberTranslationAdminBundle" : "" }
