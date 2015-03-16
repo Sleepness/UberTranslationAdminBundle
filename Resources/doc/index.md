@@ -25,7 +25,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Sleepness\UberTranslationBundle\SleepnessUberTranslationAdminBundle(),
+        new Sleepness\UberTranslationAdminBundle\SleepnessUberTranslationAdminBundle(),
     );
 }
 ```
