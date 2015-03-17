@@ -1,6 +1,6 @@
 <?php
 
-namespace Sleepness\UberTranslationBundle\Tests\Controller;
+namespace Sleepness\UberTranslationAdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

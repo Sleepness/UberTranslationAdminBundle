@@ -1,6 +1,6 @@
 <?php
 
-namespace Sleepness\UberTranslationBundle\Tests\Frontend;
+namespace Sleepness\UberTranslationAdminBundle\Tests\Frontend;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class MemcachedMessagesFrontendTest extends WebTestCase
 {
     /**
-     * @var \Sleepness\UberTranslationBundle\Frontend\MemcachedMessagesFrontend;
+     * @var \Sleepness\UberTranslationAdminBundle\Frontend\MemcachedMessagesFrontend;
      */
     private $messagesFrontend;
 
