@@ -28,6 +28,6 @@
         "sleepness/uber-translation-bundle": "@dev"
     },
     "autoload" : {
-        "psr-0" : { "Sleepness\\UberTranslationAdminBundle" : "" }
+        "psr-4" : { "Sleepness\\UberTranslationAdminBundle\\" : "" }
     }
 }
