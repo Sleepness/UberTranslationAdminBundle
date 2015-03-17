@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author Viktor Novikov <viktor.novikov95@gmail.com>
  */
-class SleepnessUberTranslationAdminBundleExtension extends Extension
+class SleepnessUberTranslationAdminExtension extends Extension
 {
     /**
      * {@inheritDoc}
