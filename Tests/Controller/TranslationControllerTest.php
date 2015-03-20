@@ -13,13 +13,19 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class TranslationControllerTest extends WebTestCase
 {
     /**
+     * @var \Sleepness\UberTranslationBundle\Cache\UberMemcached;
+     */
+    private $uberMemcached;
+
+    private $client;
+
+    /**
      * Test indexAction() of TranslationsController
      */
     public function testIndexAction()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/translations');
-        $response = $client->getResponse();
+        $crawler = $this->client->request('GET', '/translations');
+        $response = $this->client->getResponse();
         $this->assertEquals(1, $crawler->filter('html:contains("Translations Dashboard")')->count());
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals(5, $crawler->filter('th')->count());
@@ -37,9 +43,8 @@ class TranslationControllerTest extends WebTestCase
      */
     public function testEditAction()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/translation/edit/en/messages/test.key');
-        $response = $client->getResponse();
+        $crawler = $this->client->request('POST', '/translation/edit/en_US/messages/test.key');
+        $response = $this->client->getResponse();
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals(1, $crawler->filter('form')->count());
         $this->assertEquals(1, $crawler->filter('div.modal')->count());
@@ -57,8 +62,27 @@ class TranslationControllerTest extends WebTestCase
      */
     public function testDeleteAction()
     {
-        $client = static::createClient();
-        $client->request('GET', '/translation/delete/en/messages/test.key');
-        $this->assertTrue($client->getResponse()->isRedirect()); // this will fail for now
+        $this->client->request('GET', '/translation/delete/en_US/messages/test.key');
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+    }
+
+    /**
+     * Set up fixtures for testing
+     */
+    public function setUp()
+    {
+        static::bootKernel(array());
+        $container = static::$kernel->getContainer();
+        $this->client = static::createClient();
+        $this->uberMemcached = $container->get('uber.memcached');
+        $this->uberMemcached->addItem('en_US', array('messages' => array('test.key' => 'test value')));
+    }
+
+    /**
+     * Tear down fixtures after testing
+     */
+    public function tearDown()
+    {
+        $this->uberMemcached->deleteItem('en_US');
     }
 }
