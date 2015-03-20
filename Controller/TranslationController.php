@@ -6,6 +6,7 @@ use Sleepness\UberTranslationAdminBundle\Form\Model\TranslationModel;
 use Sleepness\UberTranslationAdminBundle\Form\Type\TranslationMessageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller responsive for managing translations
@@ -57,12 +58,16 @@ class TranslationController extends Controller
      * @param $_domain
      * @param $_key
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction(Request $request, $localeKey, $_domain, $_key)
     {
         $mem = $this->get('uber.memcached');
         $translations = $mem->getItem($localeKey);
         $message = $translations[$_domain][$_key];
+        if ($message == null) {
+            throw new NotFoundHttpException('You try to edit non existing translation!');
+        }
         $model = new TranslationModel();
         $model->setTranslation($message);
         $form = $this->createForm(new TranslationMessageType(), $model);
@@ -91,11 +96,15 @@ class TranslationController extends Controller
      * @param $_domain
      * @param $_key
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function deleteAction($localeKey, $_domain, $_key)
     {
         $mem = $this->get('uber.memcached');
         $translations = $mem->getItem($localeKey);
+        if ($translations[$_domain][$_key] == null) {
+            throw new NotFoundHttpException('You try to delete non existing translation!');
+        }
         unset($translations[$_domain][$_key]);
         $mem->addItem($localeKey, $translations);
         $this->get('session')->getFlashBag()->add('translation_deleted', 'delete_success');
