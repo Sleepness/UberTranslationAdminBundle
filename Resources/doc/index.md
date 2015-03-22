@@ -32,21 +32,27 @@ public function registerBundles()
 
 ### Step 3: Routing configuration
 
-In `app/config/routing.yml` you must to include bundle routes:
+In `app/config/routing.yml` add routing configuration:
 
 ``` yml
 uber:
     resource: "@SleepnessUberTranslationBundle/Resources/config/routing.yml"
 ```
 
-### Step 4: Import translations into memcached by console command `uber:translations:import locale BundleName`
+### Step 4: Prerequisites
+
+The bundle requires `KnpPaginatorBundle`. For more information about paginator, check [KnpPaginatorBundle documentation](https://github.com/KnpLabs/KnpPaginatorBundle/blob/master/README.md).
+
+### Step 5: Import translations
+
+Import translations into memcached by running console command `uber:translations:import locale BundleName`
 
 Example:
 
 ``` bash
-$ php app/console uber:translations:import
+$ php app/console uber:translations:import en,uk AcmeDemoBundle
 ```
 
-### Step 5: Go to translation dashboard panel, you URL may look like:
+### Step 6: Translation dashboard panel
 
- `www.examle.com/tanslations`
+Go to translation dashboard panel. You URL may look like: `www.example.com/translations`
