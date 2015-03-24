@@ -9,6 +9,7 @@ Features include:
 - search for Memcached translation by given: locale, domain, key or text of translation
 - edit Memcached translations
 - delete Memcached translations
+- language support (English, German, Ukrainian, Russian)
 - unit tested
 
 Documentation
