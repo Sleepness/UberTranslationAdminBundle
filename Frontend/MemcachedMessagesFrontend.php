@@ -70,6 +70,9 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
+                if (!$translations) {
+                    return array();
+                }
                 foreach ($translations as $memcacheDomain => $messages) {
                     if ($domain == $memcacheDomain) {
                         foreach ($messages as $ymlKey => $value) {
@@ -92,6 +95,9 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
+                if (!$translations) {
+                    return array();
+                }
                 foreach ($translations as $memcacheDomain => $messages) {
                     foreach ($messages as $ymlKey => $value) {
                         if ($ymlKey == $keyYml) {
@@ -114,6 +120,9 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
+                if (!$translations) {
+                    return array();
+                }
                 foreach ($translations as $memcacheDomain => $messages) {
                     foreach ($messages as $ymlKey => $value) {
                         if (stripos($value, $text) !== false) {
@@ -136,6 +145,9 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
+                if (!$translations) {
+                    return array();
+                }
                 foreach ($translations as $memcacheDomain => $messages) {
                     foreach ($messages as $ymlKey => $value) {
                         $this->prepareTranslations($memcacheDomain, $ymlKey, $value, $locale);
