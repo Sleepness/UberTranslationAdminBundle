@@ -1,6 +1,14 @@
 {% trans_default_domain 'SleepnessUberTranslationBundle' %}
 
-<h1>{{ 'main_text'|trans }}</h1>
+<div class="row">
+    <div class="col-md-10">
+        <h1>{{ 'main_text'|trans }}</h1>
+    </div>
+    <div class="col-md-2">
+        <a href="{{ path('sleepness_translation_create') }}" class="btn btn-success">Add new translation</a>
+    </div>
+</div>
+
 
 {% for message_deleted in app.session.flashbag.get('translation_deleted') %}
     <div class="alert alert-success">
@@ -18,12 +26,12 @@
     </div>
 {% endfor %}
 
-<div class="container">
+<div class="row">
     {% include 'SleepnessUberTranslationAdminBundle:Translation:filters.html.twig' %}
 </div>
 
 <br/>
 
-<div class="container">
+<div class="row">
     {% include 'SleepnessUberTranslationAdminBundle:Translation:table.html.twig' %}
 </div>

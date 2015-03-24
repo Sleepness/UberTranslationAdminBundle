@@ -111,4 +111,15 @@ class TranslationController extends Controller
 
         return $this->redirect($this->generateUrl('sleepness_translation_dashboard'));
     }
+
+    /**
+     * Render form for creating new translations
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function createAction(Request $request)
+    {
+        return $this->render('SleepnessUberTranslationAdminBundle:Translation:create.html.twig');
+    }
 }
