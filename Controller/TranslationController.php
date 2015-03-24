@@ -41,7 +41,7 @@ class TranslationController extends Controller
             $messages = $messageCatalogue->getAll();
         }
         $paginator = $this->get('knp_paginator'); // paginating results
-        $messages = $paginator->paginate($messages, $request->query->get('page', 1), 5);
+        $messages = $paginator->paginate($messages, $request->query->get('page', 1), 15);
         $locales = $this->container->getParameter('sleepness_uber_translation.supported_locales');
 
         return $this->render('SleepnessUberTranslationAdminBundle:Translation:index.html.twig', array(
