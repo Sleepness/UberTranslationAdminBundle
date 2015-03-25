@@ -1,4 +1,4 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/?branch=develop)
+[![Build Status](https://travis-ci.org/Sleepness/UberTranslationAdminBundle.svg?branch=develop)](https://travis-ci.org/Sleepness/UberTranslationAdminBundle)  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/?branch=develop)
 
 UberTranslationAdminBundle
 =====================
