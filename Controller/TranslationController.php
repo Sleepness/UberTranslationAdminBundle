@@ -79,9 +79,12 @@ class TranslationController extends Controller
             $formDomain = $model->getDomain();
             $formMessage = $model->getTranslation();
             unset($translations[$_domain][$_key]);
-            $mem->addItem($localeKey, $translations);
-            $editedTranslation[$formDomain][$_key] = $formMessage;
-            $mem->addItem($formLocaleKey, $editedTranslation);
+            if ($formLocaleKey != $localeKey) {
+                $mem->addItem($localeKey, $translations);
+                $translations = $mem->getItem($formLocaleKey);
+            }
+            $translations[$formDomain][$_key] = $formMessage;
+            $mem->addItem($formLocaleKey, $translations);
             $this->get('session')->getFlashBag()->add('translation_edited', 'edit_success');
 
             return $this->redirect($this->generateUrl('sleepness_translation_dashboard'));
