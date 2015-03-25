@@ -132,6 +132,9 @@ class TranslationController extends Controller
     {
         $model = new TranslationModel();
         $form = $this->createForm(new TranslationMessageType(), $model);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+        }
 
         return $this->render('SleepnessUberTranslationAdminBundle:Translation:create.html.twig', array('form' => $form->createView()));
     }

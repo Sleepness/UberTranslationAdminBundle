@@ -1,10 +1,10 @@
 {% extends 'SleepnessUberTranslationAdminBundle::layout.html.twig' %}
+{% trans_default_domain 'SleepnessUberTranslationBundle' %}
 
 {% block uber_translation_bundle_content %}
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                {% trans_default_domain 'SleepnessUberTranslationBundle' %}
 
                 {{ form_errors(form) }}
 
@@ -28,8 +28,10 @@
                                 {{ form_widget(form.translation, {'attr': {'class': 'form-control'} } ) }}
                             </div>
                             <br/>
-                            <a href="#" class="btn btn-success" id="btn_edit_translation" data-toggle="modal"
-                               data-target="#save" data-placement="top">{{ 'translation_form.save'|trans }}</a>
+                            {{ form_widget(form._token) }}
+                            <button type="submit" class="btn btn-success" id="btn_create_translation" data-placement="top">
+                                {{ 'translation_form.save'|trans }}
+                            </button>
                         </div>
                     </div>
                 </form>
