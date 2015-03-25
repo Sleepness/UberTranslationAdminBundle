@@ -27,6 +27,10 @@
                                 <label for="translation">{{ 'translation_form.translation'|trans }}</label>
                                 {{ form_widget(form.translation, {'attr': {'class': 'form-control'} } ) }}
                             </div>
+                            <div class="input-group">
+                                <label for="translation">{{ 'translation_form.key'|trans }}</label>
+                                {{ form_widget(form.key, {'attr': {'class': 'form-control'} } ) }}
+                            </div>
                             <br/>
                             {{ form_widget(form._token) }}
                             <button type="submit" class="btn btn-success" id="btn_create_translation" data-placement="top">

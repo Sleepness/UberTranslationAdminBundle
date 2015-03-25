@@ -21,6 +21,7 @@ class TranslationMessageType extends AbstractType
         $builder
             ->add('locale', 'text')
             ->add('domain', 'text')
+            ->add('key', 'text')
             ->add('translation', 'textarea', array(
                 'attr'  => array(
                     'rows' => 4,

@@ -27,6 +27,11 @@ class TranslationModel
     private $translation;
 
     /**
+     * @Assert\NotBlank()
+     */
+    private $key;
+
+    /**
      * @param $locale
      * @return $this
      */
@@ -77,5 +82,24 @@ class TranslationModel
     public function getTranslation()
     {
         return $this->translation;
+    }
+
+    /**
+     * @param $key
+     * @return $this
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKey()
+    {
+        return $this->key;
     }
 } 
