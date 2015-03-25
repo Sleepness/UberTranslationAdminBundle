@@ -5,7 +5,8 @@ add_trans_button: Добавить перевод
 main_text: Управляйте переводами вашего приложения!
 
 translation_form:
-    title: Редактирование перевода
+    create_title: Создание перевода
+    edit_title: Редактирование перевода
     locale: Локаль:
     domain: Домен:
     translation: Перевод:

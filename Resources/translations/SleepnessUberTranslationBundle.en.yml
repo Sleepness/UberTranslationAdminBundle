@@ -5,7 +5,8 @@ add_trans_button: Add new translation
 main_text: Manage translations of your app!
 
 translation_form:
-    title: Edit translation
+    create_title: Create translation
+    edit_title: Edit translation
     locale: Locale:
     domain: Domain:
     translation: Translation:

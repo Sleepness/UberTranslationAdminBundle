@@ -1,11 +1,12 @@
 logo_text: Übersetzungen Armaturenbrett
 
-add_trans_button: Nuere Übersetzung
+add_trans_button: Übersetzung hinzufügen
 
 main_text: Übersetzungen Ihrer App verwalten!
 
 translation_form:
-    title: Übersetzung bearbeiten
+    create_title: Erstelle Übersetzung
+    edit_title: Übersetzung bearbeiten
     locale: Schauplatz:
     domain: Domain:
     translation: Übersetzung:

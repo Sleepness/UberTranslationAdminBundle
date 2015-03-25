@@ -5,7 +5,8 @@ add_trans_button: Додати переклад
 main_text: Управляйте перекладами вашого додатку!
 
 translation_form:
-    title: Редагування перекладу
+    create_title: Створення перекладу
+    edit_title: Редагування перекладу
     locale: Локаль:
     domain: Домен:
     translation: Переклад:
