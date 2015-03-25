@@ -19,7 +19,7 @@ table:
     locale: Locale
     domain: Domain
     key: Key
-    messages: Messages
+    message: Message
     actions: Actions
 
 filters:

@@ -19,7 +19,7 @@ table:
     locale: Локаль
     domain: Домен
     key: Ключ
-    messages: Повідомлення
+    message: Повідомлення
     actions: Дії
 
 filters:

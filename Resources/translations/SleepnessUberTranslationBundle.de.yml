@@ -19,7 +19,7 @@ table:
     locale: Schauplatz
     domain: Domain
     key: Schlüssel
-    messages: Nachrichten
+    message: Nachricht
     actions: Aktionen
 
 filters:
