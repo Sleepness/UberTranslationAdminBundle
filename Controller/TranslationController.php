@@ -72,6 +72,7 @@ class TranslationController extends Controller
         $model->setLocale($localeKey);
         $model->setDomain($_domain);
         $model->setTranslation($message);
+        $model->setKey($_key);
         $form = $this->createForm(new TranslationMessageType(), $model);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -143,6 +144,7 @@ class TranslationController extends Controller
                 ));
             } else {
                 $translations = $cache->getItem($model->getLocale());
+                // will continue soon
             }
         }
 

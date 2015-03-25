@@ -19,6 +19,10 @@
                 <label for="translation">{{ 'translation_form.translation'|trans }}</label>
                 {{ form_widget(form.translation, {'attr': {'class': 'form-control'} } ) }}
             </div><br/>
+            <div class="input-group">
+                <label for="translation">{{ 'translation_form.key'|trans }}</label>
+                {{ form_widget(form.key, {'attr': {'class': 'form-control'} } ) }}
+            </div>
             <a href="#" class="btn btn-success" id="btn_edit_translation" data-toggle="modal" data-target="#save" data-placement="top">{{ 'translation_form.save'|trans }}</a>
         </div>
     </div>
