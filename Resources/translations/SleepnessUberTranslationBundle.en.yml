@@ -3,8 +3,11 @@ logo_text: Translations Dashboard
 main_text: Manage translations of your app!
 
 translation_form:
+    title: Edit translation
+    locale: Locale:
+    domain: Domain:
+    translation: Translation:
     save: Save
-    label: Translation:
 
 table:
     total: Total translations

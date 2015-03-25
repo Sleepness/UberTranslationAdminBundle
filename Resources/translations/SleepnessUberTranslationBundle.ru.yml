@@ -3,8 +3,11 @@ logo_text: Управление переводами
 main_text: Управляйте переводами вашего приложения!
 
 translation_form:
+    title: Редактирование перевода
+    locale: Локаль:
+    domain: Домен:
+    translation: Перевод:
     save: Сохранить
-    label: Перевод:
 
 table:
     total: Количество переводов

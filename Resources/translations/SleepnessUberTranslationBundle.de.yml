@@ -3,8 +3,11 @@ logo_text: Übersetzungen Armaturenbrett
 main_text: Übersetzungen Ihrer App verwalten!
 
 translation_form:
+    title: Übersetzung bearbeiten
+    locale: Schauplatz:
+    domain: Domain:
+    translation: Übersetzung:
     save: Speichern
-    label: Übersetzung:
 
 table:
     total: Insgesamt Übersetzungen

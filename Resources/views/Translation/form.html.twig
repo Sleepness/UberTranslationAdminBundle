@@ -6,17 +6,17 @@
 
     <div class="form-group">
         <div style="margin-bottom: 25px" class="input-group">
-            <label for="TranslationInput">{{ 'translation_form.label'|trans }}</label><br/>
+            <h3>{{ 'translation_form.title'|trans }}</h3>
             <div class="input-group">
-                <label for="locale">{{ 'table.locale'|trans }}:</label>
+                <label for="locale">{{ 'translation_form.locale'|trans }}</label>
                 {{ form_widget(form.locale, {'attr': {'class': 'form-control'} } ) }}
             </div>
             <div class="input-group">
-                <label for="domain">{{ 'table.domain'|trans }}:</label>
+                <label for="domain">{{ 'translation_form.domain'|trans }}</label>
                 {{ form_widget(form.domain, {'attr': {'class': 'form-control'} } ) }}
             </div>
             <div class="input-group">
-                <label for="translation">{{ 'translation_form.label'|trans }}</label>
+                <label for="translation">{{ 'translation_form.translation'|trans }}</label>
                 {{ form_widget(form.translation, {'attr': {'class': 'form-control'} } ) }}
             </div><br/>
             <a href="#" class="btn btn-success" id="btn_edit_translation" data-toggle="modal" data-target="#save" data-placement="top">{{ 'translation_form.save'|trans }}</a>

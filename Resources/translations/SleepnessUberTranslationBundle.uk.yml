@@ -3,8 +3,11 @@ logo_text: Керування перекладами
 main_text: Управляйте перекладами вашого додатку!
 
 translation_form:
+    title: Редагування перекладу
+    locale: Локаль:
+    domain: Домен:
+    translation: Переклад:
     save: Зберегти
-    label: Переклад:
 
 table:
     total: Загальна кількість перекладів
