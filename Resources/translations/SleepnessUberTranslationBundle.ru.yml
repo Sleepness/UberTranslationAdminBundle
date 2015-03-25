@@ -7,6 +7,7 @@ main_text: Управляйте переводами вашего приложе
 translation_form:
     create_title: Создание перевода
     edit_title: Редактирование перевода
+    key: Ключ
     locale: Локаль:
     domain: Домен:
     translation: Перевод:

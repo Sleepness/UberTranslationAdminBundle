@@ -7,6 +7,7 @@ main_text: Manage translations of your app!
 translation_form:
     create_title: Create translation
     edit_title: Edit translation
+    key: Key
     locale: Locale:
     domain: Domain:
     translation: Translation:
