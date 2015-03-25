@@ -14,7 +14,51 @@ class TranslationModel
     /**
      * @Assert\NotBlank()
      */
+    private $locale;
+
+    /**
+     * @Assert\NotBlank()
+     */
+    private $domain;
+
+    /**
+     * @Assert\NotBlank()
+     */
     private $translation;
+
+    /**
+     * @param $locale
+     * @return $this
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @param $domain
+     * @return $this
+     */
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDomain()
+    {
+        return $this->domain;
+    }
 
     /**
      * @param $translation
