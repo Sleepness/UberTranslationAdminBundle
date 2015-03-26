@@ -5,6 +5,7 @@ namespace Sleepness\UberTranslationAdminBundle\Controller;
 use Sleepness\UberTranslationAdminBundle\Form\Model\TranslationModel;
 use Sleepness\UberTranslationAdminBundle\Form\Type\TranslationMessageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -149,5 +150,26 @@ class TranslationController extends Controller
         }
 
         return $this->render('SleepnessUberTranslationAdminBundle:Translation:create.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * Check translation existence in Memcached
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function checkAction(Request $request)
+    {
+        $key = $request->query->get('key');
+        $domain = $request->query->get('domain');
+        $locale = $request->query->get('locale');
+        $translations = $this->get('uber.memcached')->getItem($locale);
+        if ($translations && array_key_exists($domain, $translations) && array_key_exists($key, $translations[$domain])) {
+
+            return new JsonResponse(array('isExists' => true));
+        } else {
+
+            return new JsonResponse(array('isExists' => false));
+        }
     }
 }

@@ -13,3 +13,7 @@ sleepness_translation_delete:
 sleepness_translation_create:
   pattern: /translation/create
   defaults: { _controller: SleepnessUberTranslationAdminBundle:Translation:create }
+
+sleepness_translation_check:
+  pattern: /translation/check
+  defaults: { _controller: SleepnessUberTranslationAdminBundle:Translation:check }
