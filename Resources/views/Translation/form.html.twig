@@ -18,11 +18,11 @@
             <div class="input-group">
                 <label for="translation">{{ 'translation_form.translation'|trans }}</label>
                 {{ form_widget(form.translation, {'attr': {'class': 'form-control'} } ) }}
-            </div><br/>
+            </div>
             <div class="input-group" style="display: none">
                 <label for="translation">{{ 'translation_form.key'|trans }}</label>
                 {{ form_widget(form.key, {'attr': {'class': 'form-control'} } ) }}
-            </div>
+            </div><br />
             <a href="#" class="btn btn-success" id="btn_edit_translation" data-toggle="modal" data-target="#save" data-placement="top">{{ 'translation_form.save'|trans }}</a>
             <a href="{{ path('sleepness_translation_check') }}" id="path_for_check"></a>
         </div>
@@ -40,19 +40,22 @@
                         <p>
                             <span class="glyphicon glyphicon-warning-sign"></span>
                             <span id="confirm_message">{{ 'edit_modal.confirm_message'|trans }}</span>
-                            <span id="check_existence" style="display: none">{{ 'edit_modal.check_existence'|trans }}</span>
+                            <span id="check_existence" style="display: none">{{ 'edit_modal.check_existence'|trans }}</span><br /><br />
                         </p>
-                        <p id="changed_locale"> Changed Locale
-                            {{ 'edit_modal.from'|trans }}: "{{ locale }}"
-                            {{ 'edit_modal.to'|trans }}: "<span id="edited_locale"></span>"
+                        <p id="changed_locale">
+                            {{ 'edit_modal.changed_locale'|trans }}<br />
+                            {{ 'edit_modal.from'|trans }}: "{{ locale }}"<br />
+                            {{ 'edit_modal.to'|trans }}: "<span id="edited_locale"></span>"<br /><br />
                         </p>
-                        <p id="changed_domain"> Changed Domain
-                            {{ 'edit_modal.from'|trans }}: "{{ domain }}"
-                            {{ 'edit_modal.to'|trans }}: "<span id="edited_domain"></span>"
+                        <p id="changed_domain">
+                            {{ 'edit_modal.changed_domain'|trans }}<br />
+                            {{ 'edit_modal.from'|trans }}: "{{ domain }}"<br />
+                            {{ 'edit_modal.to'|trans }}: "<span id="edited_domain"></span>"<br /><br />
                         </p>
-                        <p id="changed_translation"> Changed Message
-                            {{ 'edit_modal.from'|trans }}: "{{ message }}"
-                            {{ 'edit_modal.to'|trans }}: "<span id="edited_translation"></span>"
+                        <p id="changed_translation">
+                            {{ 'edit_modal.changed_translation'|trans }}<br />
+                            {{ 'edit_modal.from'|trans }}: "{{ message }}"<br />
+                            {{ 'edit_modal.to'|trans }}: "<span id="edited_translation"></span>"<br /><br />
                         </p>
                     </div>
                 </div>

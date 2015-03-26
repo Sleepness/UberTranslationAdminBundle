@@ -42,7 +42,11 @@ edit_modal:
     approve: Ja
     reject: Keine
     title: Übersetzung bearbeiten
-    confirm_message: Sind Sie sicher, dass Sie diese Übersetzung bearbeiten möchten?
+    check_existence: Übersetzung mit solchen Schlüssel, schauplatz und Domain existiert bereits! Überschreiben?
+    confirm_message: Sind Sie sicher, Sie wollen, um die Eigenschaften dieser Übersetzung bearbeiten?
+    changed_locale: Geändert schauplatz:
+    changed_domain: Geändert domain:
+    changed_translation: Geändert übersetzung:
     from: Von
     to: Bis sur
 

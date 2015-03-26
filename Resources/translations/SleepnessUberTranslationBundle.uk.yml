@@ -42,7 +42,11 @@ edit_modal:
     approve: Так
     reject: Ні
     title: Змінити переклад
-    confirm_message: Ви впевнені що хочете змінити даний переклад?
+    check_existence: Переклад з таким ключем, локалью та доменом вже існує! Перезаписати його?
+    confirm_message: Ви впевнені, що хочете змінити властивості даного перекладу?
+    changed_locale: Змінено локаль:
+    changed_domain: Змінено домен:
+    changed_translation: Змінено переклад:
     from: З
     to: На
 
