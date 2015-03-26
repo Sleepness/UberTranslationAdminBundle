@@ -19,7 +19,7 @@
                 <label for="translation">{{ 'translation_form.translation'|trans }}</label>
                 {{ form_widget(form.translation, {'attr': {'class': 'form-control'} } ) }}
             </div><br/>
-            <div class="input-group" style="display:none">
+            <div class="input-group" style="display: none">
                 <label for="translation">{{ 'translation_form.key'|trans }}</label>
                 {{ form_widget(form.key, {'attr': {'class': 'form-control'} } ) }}
             </div>
@@ -39,16 +39,20 @@
                     <div class="alert alert-warning">
                         <p>
                             <span class="glyphicon glyphicon-warning-sign"></span>
-                            {{ 'edit_modal.confirm_message'|trans }}
+                            <span id="confirm_message">{{ 'edit_modal.confirm_message'|trans }}</span>
+                            <span id="check_existence" style="display: none">{{ 'edit_modal.check_existence'|trans }}</span>
                         </p>
-                        <p>
+                        <p id="changed_locale"> Changed Locale
+                            {{ 'edit_modal.from'|trans }}: "{{ locale }}"
+                            {{ 'edit_modal.to'|trans }}: "<span id="edited_locale"></span>"
+                        </p>
+                        <p id="changed_domain"> Changed Domain
+                            {{ 'edit_modal.from'|trans }}: "{{ domain }}"
+                            {{ 'edit_modal.to'|trans }}: "<span id="edited_domain"></span>"
+                        </p>
+                        <p id="changed_translation"> Changed Message
                             {{ 'edit_modal.from'|trans }}: "{{ message }}"
-                        </p>
-                        <p>
                             {{ 'edit_modal.to'|trans }}: "<span id="edited_translation"></span>"
-                        </p>
-                        <p>
-                            <span id="check_existence"></span>
                         </p>
                     </div>
                 </div>
