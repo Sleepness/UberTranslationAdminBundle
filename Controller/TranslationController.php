@@ -137,16 +137,21 @@ class TranslationController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $cache = $this->get('uber.memcached');
-            if (null ==  $cache->getItem($model->getLocale())) {
+            $translations = $cache->getItem($model->getLocale());
+            if (null == $translations) {
                 $cache->addItem($model->getLocale(), array(
                     $model->getDomain() => array(
                         $model->getKey() => $model->getTranslation(),
                     ),
                 ));
             } else {
-                $translations = $cache->getItem($model->getLocale());
-                // will continue soon
+                if (!isset($translations[$model->getDomain()][$model->getKey()])) {
+                    $translations[$model->getDomain()][$model->getKey()] = $model->getTranslation();
+                }
             }
+            $cache->addItem($model->getLocale(), $translations);
+
+            return $this->redirect($this->generateUrl('sleepness_translation_dashboard'));
         }
 
         return $this->render('SleepnessUberTranslationAdminBundle:Translation:create.html.twig', array('form' => $form->createView()));
