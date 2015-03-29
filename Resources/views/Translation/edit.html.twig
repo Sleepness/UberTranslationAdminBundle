@@ -1,10 +1,63 @@
 {% extends 'SleepnessUberTranslationAdminBundle::layout.html.twig' %}
+{% trans_default_domain 'SleepnessUberTranslationBundle' %}
 
 {% block uber_translation_bundle_content %}
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                {% include 'SleepnessUberTranslationAdminBundle:Translation:form.html.twig' %}
+                {{ form_errors(form) }}
+                <h3>{{ 'translation_form.edit_title'|trans }}</h3>
+                <form method="post" {{ form_enctype(form) }} role="form">
+                    <div class="form-group">
+                        {% include 'SleepnessUberTranslationAdminBundle:Translation:form.html.twig' %}
+                        <a href="#" class="btn btn-success" id="btn_edit_translation" data-toggle="modal" data-target="#save" data-placement="top">{{ 'translation_form.save'|trans }}</a>
+                        <a href="{{ path('sleepness_translation_check') }}" id="path_for_check"></a>
+                    </div>
+
+                    <div class="modal fade" id="save" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title custom_align" id="Heading">{{ 'edit_modal.title'|trans }}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="alert alert-warning">
+                                        <p>
+                                            <span class="glyphicon glyphicon-warning-sign"></span>
+                                            <span id="confirm_message">{{ 'edit_modal.confirm_message'|trans }}</span>
+                                            <span id="check_existence" style="display: none">{{ 'edit_modal.check_existence'|trans }}</span><br /><br />
+                                        </p>
+                                        <p id="changed_locale">
+                                            {{ 'edit_modal.changed_locale'|trans }}<br />
+                                            {{ 'edit_modal.from'|trans }}: "{{ locale }}"<br />
+                                            {{ 'edit_modal.to'|trans }}: "<span id="edited_locale"></span>"<br /><br />
+                                        </p>
+                                        <p id="changed_domain">
+                                            {{ 'edit_modal.changed_domain'|trans }}<br />
+                                            {{ 'edit_modal.from'|trans }}: "{{ domain }}"<br />
+                                            {{ 'edit_modal.to'|trans }}: "<span id="edited_domain"></span>"<br /><br />
+                                        </p>
+                                        <p id="changed_translation">
+                                            {{ 'edit_modal.changed_translation'|trans }}<br />
+                                            {{ 'edit_modal.from'|trans }}: "{{ message }}"<br />
+                                            {{ 'edit_modal.to'|trans }}: "<span id="edited_translation"></span>"<br /><br />
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer ">
+                                    <button type="submit" value="Yes" class="btn btn-success" name="submit">
+                                        <span class="glyphicon glyphicon-ok-sign"></span>  {{ 'edit_modal.approve'|trans }}
+                                    </button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                        <span class="glyphicon glyphicon-remove"></span>  {{ 'edit_modal.reject'|trans }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
             </div>
             <div class="col-md-6">
                 {% include 'SleepnessUberTranslationAdminBundle:Translation:trans_credentials.html.twig' %}

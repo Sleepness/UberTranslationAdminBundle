@@ -3,7 +3,6 @@
 
 {% block uber_translation_bundle_content %}
     <div class="container">
-
         {% for message_creation_fail in app.session.flashbag.get('translation_not_created') %}
             <div class="row">
                 <div class="alert alert-danger">
@@ -13,41 +12,16 @@
                 </div>
             </div>
         {% endfor %}
-
         <div class="row">
             <div class="col-md-6">
-
                 {{ form_errors(form) }}
-
                 <h3>{{ 'translation_form.create_title'|trans }}</h3>
-
                 <form method="post" {{ form_enctype(form) }} role="form">
-
                     <div class="form-group">
-                        <div style="margin-bottom: 25px" class="input-group">
-
-                            <div class="input-group">
-                                <label for="locale">{{ 'translation_form.locale'|trans }}</label>
-                                {{ form_widget(form.locale, {'attr': {'class': 'form-control'} } ) }}
-                            </div>
-                            <div class="input-group">
-                                <label for="domain">{{ 'translation_form.domain'|trans }}</label>
-                                {{ form_widget(form.domain, {'attr': {'class': 'form-control'} } ) }}
-                            </div>
-                            <div class="input-group">
-                                <label for="translation">{{ 'translation_form.translation'|trans }}</label>
-                                {{ form_widget(form.translation, {'attr': {'class': 'form-control'} } ) }}
-                            </div>
-                            <div class="input-group">
-                                <label for="translation">{{ 'translation_form.key'|trans }}</label>
-                                {{ form_widget(form.key, {'attr': {'class': 'form-control'} } ) }}
-                            </div>
-                            <br/>
-                            {{ form_widget(form._token) }}
-                            <button type="submit" class="btn btn-success" id="btn_create_translation" data-placement="top">
-                                {{ 'translation_form.save'|trans }}
-                            </button>
-                        </div>
+                        {% include 'SleepnessUberTranslationAdminBundle:Translation:form.html.twig' %}
+                        <button type="submit" class="btn btn-success" id="btn_create_translation" data-placement="top">
+                            {{ 'translation_form.save'|trans }}
+                        </button>
                     </div>
                 </form>
             </div>
