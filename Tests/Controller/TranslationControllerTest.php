@@ -67,6 +67,24 @@ class TranslationControllerTest extends WebTestCase
     }
 
     /**
+     * Test createAction() of TranslationsController
+     */
+    public function testCreateAction()
+    {
+        $crawler = $this->client->request('GET', '/translation/create');
+        $response = $this->client->getResponse();
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(1, $crawler->filter('form')->count());
+        $this->assertEquals(4, $crawler->filter('input')->count());
+        $this->assertTrue(
+            $response->headers->contains(
+                'Content-Type',
+                'text/html; charset=UTF-8'
+            )
+        );
+    }
+
+    /**
      * Set up fixtures for testing
      */
     public function setUp()
