@@ -3,6 +3,17 @@
 
 {% block uber_translation_bundle_content %}
     <div class="container">
+
+        {% for message_creation_fail in app.session.flashbag.get('translation_not_created') %}
+            <div class="row">
+                <div class="alert alert-danger">
+                    <strong>
+                        {{ message_creation_fail|trans }}
+                    </strong>
+                </div>
+            </div>
+        {% endfor %}
+
         <div class="row">
             <div class="col-md-6">
 

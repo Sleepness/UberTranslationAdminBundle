@@ -147,9 +147,13 @@ class TranslationController extends Controller
             } else {
                 if (!isset($translations[$model->getDomain()][$model->getKey()])) {
                     $translations[$model->getDomain()][$model->getKey()] = $model->getTranslation();
+                } else {
+                    $this->get('session')->getFlashBag()->add('translation_not_created', 'creation_failed');
+
+                    return $this->redirect($this->generateUrl('sleepness_translation_create'));
                 }
+                $cache->addItem($model->getLocale(), $translations);
             }
-            $cache->addItem($model->getLocale(), $translations);
 
             return $this->redirect($this->generateUrl('sleepness_translation_dashboard'));
         }

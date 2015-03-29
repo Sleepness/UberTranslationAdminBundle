@@ -50,6 +50,8 @@ edit_modal:
     from: From
     to: To
 
+creation_failed: Translation with this key already exist
+
 delete_success: Translation deleted successfully
 
 edit_success: Translation edited successfully

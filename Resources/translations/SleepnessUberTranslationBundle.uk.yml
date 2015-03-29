@@ -50,6 +50,8 @@ edit_modal:
     from: З
     to: На
 
+creation_failed: Переклад з таким ключем уже існує
+
 delete_success: Переклад видалено успішно
 
 edit_success: Переклад відредаговано успішно
