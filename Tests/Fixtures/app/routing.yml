@@ -1,0 +1,2 @@
+uber:
+    resource: "@SleepnessUberTranslationAdminBundle/Resources/config/routing.yml"
