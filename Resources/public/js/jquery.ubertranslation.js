@@ -13,6 +13,7 @@
         var $translation_form_translation = $("#translation_form_translation");
         var $check_existence = $("#check_existence");
         var $confirm_message = $("#confirm_message");
+        var $trans_loading = $('#trans_loading');
 
         var definedMessage = $translation_form_translation.val();
         var definedKey = $translation_form_key.val();
@@ -29,6 +30,7 @@
             $changed_domain.css("display", "none");
 
             if (definedKey != $translation_form_key.val()) {
+                $trans_loading.show();
                 var url = $("#path_for_check").attr('href');
                 $.get(url, {
                     key: $translation_form_key.val(),
@@ -38,6 +40,7 @@
                     if (data.isExists == true) {
                         $check_existence.show();
                         $confirm_message.hide();
+                        $trans_loading.hide();
                     }
                 });
             } else {
