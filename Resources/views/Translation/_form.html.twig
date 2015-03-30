@@ -1,7 +1,7 @@
 {% trans_default_domain 'SleepnessUberTranslationBundle' %}
 
 {% block translation_form_fields %}
-    <div style="margin-bottom: 25px" class="input-group">
+    <div class="input-group uber_trans_form_input_group">
         <div class="input-group">
             <label for="locale">{{ 'translation_form.locale'|trans }}</label>
             {{ form_widget(form.locale, {'attr': {'class': 'form-control'} } ) }}
