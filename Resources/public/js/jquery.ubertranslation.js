@@ -17,18 +17,16 @@
         var definedLocale = $translation_form_locale.val();
         var definedDomain = $translation_form_domain.val();
 
+        $("#check_existence").hide();
+        $("#confirm_message").hide();
+
         $("#btn_edit_translation").click(function () {
             //reset displaying changed properties
             $changed_translation.css("display", "none");
             $changed_locale.css("display", "none");
             $changed_domain.css("display", "none");
 
-            $("#check_existence").hide();
-            $("#confirm_message").show();
-
             if (definedKey != $translation_form_key.val()) {
-                console.log(definedKey);
-                console.log($translation_form_key.val());
                 var url = $("#path_for_check").attr('href');
                 $.get(url, {
                     key: $translation_form_key.val(),
@@ -40,15 +38,20 @@
                         $("#confirm_message").hide();
                     }
                 });
+            } else {
+                $("#confirm_message").show();
             }
 
             if ($translation_form_translation.val() != definedMessage) {
+                $changed_translation.show();
                 $("#edited_translation").text($("#translation_form_translation").val());
             }
             if ($translation_form_locale.val() != definedLocale) {
+                $changed_locale.show();
                 $("#edited_locale").text($("#translation_form_locale").val());
             }
             if ($translation_form_domain.val() != definedDomain) {
+                $changed_domain.show();
                 $("#edited_domain").text($("#translation_form_domain").val());
             }
         });
