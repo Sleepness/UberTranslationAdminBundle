@@ -11,16 +11,18 @@
         var $translation_form_key = $("#translation_form_key");
         var $translation_form_domain = $("#translation_form_domain");
         var $translation_form_translation = $("#translation_form_translation");
+        var $check_existence = $("#check_existence");
+        var $confirm_message = $("#confirm_message");
 
         var definedMessage = $translation_form_translation.val();
         var definedKey = $translation_form_key.val();
         var definedLocale = $translation_form_locale.val();
         var definedDomain = $translation_form_domain.val();
 
-        $("#check_existence").hide();
-        $("#confirm_message").hide();
-
         $("#btn_edit_translation").click(function () {
+            $check_existence.hide();
+            $confirm_message.hide();
+
             //reset displaying changed properties
             $changed_translation.css("display", "none");
             $changed_locale.css("display", "none");
@@ -34,12 +36,12 @@
                     domain: $translation_form_domain.val()
                 }, function (data) {
                     if (data.isExists == true) {
-                        $("#check_existence").show();
-                        $("#confirm_message").hide();
+                        $check_existence.show();
+                        $confirm_message.hide();
                     }
                 });
             } else {
-                $("#confirm_message").show();
+                $confirm_message.show();
             }
 
             if ($translation_form_translation.val() != definedMessage) {
