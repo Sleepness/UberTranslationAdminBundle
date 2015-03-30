@@ -41,6 +41,9 @@
                         $check_existence.show();
                         $confirm_message.hide();
                         $trans_loading.hide();
+                    } else {
+                        $confirm_message.show();
+                        $trans_loading.hide();
                     }
                 });
             } else {
