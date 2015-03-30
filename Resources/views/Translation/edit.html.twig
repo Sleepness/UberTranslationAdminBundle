@@ -9,7 +9,7 @@
                 <h3>{{ 'translation_form.edit_title'|trans }}</h3>
                 <form method="post" {{ form_enctype(form) }} role="form">
                     <div class="form-group">
-                        {% include 'SleepnessUberTranslationAdminBundle:Translation:form.html.twig' %}
+                        {% include 'SleepnessUberTranslationAdminBundle:Translation:_form.html.twig' %}
                         <a href="#" class="btn btn-success" id="btn_edit_translation" data-toggle="modal" data-target="#save" data-placement="top">{{ 'translation_form.save'|trans }}</a>
                         <a href="{{ path('sleepness_translation_check') }}" id="path_for_check"></a>
                     </div>
@@ -62,7 +62,7 @@
                 </form>
             </div>
             <div class="col-md-6">
-                {% include 'SleepnessUberTranslationAdminBundle:Translation:trans_credentials.html.twig' %}
+                {% include 'SleepnessUberTranslationAdminBundle:Translation:_trans_credentials.html.twig' %}
             </div>
         </div>
     </div>
