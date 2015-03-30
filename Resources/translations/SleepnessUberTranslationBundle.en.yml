@@ -42,7 +42,7 @@ edit_modal:
     approve: Yes
     reject: No
     title: Edit translation
-    check_existence: Translation with such key, locale and domain already exists! Overwrite it?
+    check_existence: Translation with such key, locale and domain already exists! Replace it?
     confirm_message: Are you sure you want to edit properties of this translation?
     changed_locale: Changed locale:
     changed_domain: Changed domain:

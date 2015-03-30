@@ -50,7 +50,7 @@ edit_modal:
     from: Von
     to: Bis sur
 
-creation_failed:
+creation_failed: Übersetzung mit diesem Schlüssel bereits vorhanden
 
 delete_success: Übersetzung erfolgreich gelöscht
 
