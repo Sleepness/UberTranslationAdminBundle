@@ -25,17 +25,9 @@ class TranslationControllerTest extends WebTestCase
     public function testIndexAction()
     {
         $crawler = $this->client->request('GET', '/translations');
-        $response = $this->client->getResponse();
         $this->assertEquals(1, $crawler->filter('html:contains("logo_text")')->count());
-        $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals(5, $crawler->filter('th')->count());
-        $this->assertTrue($response->isSuccessful());
-        $this->assertTrue(
-            $response->headers->contains(
-                'Content-Type',
-                'text/html; charset=UTF-8'
-            )
-        );
+        $this->responseAsserts($this->client->getResponse());
     }
 
     /**
@@ -44,17 +36,9 @@ class TranslationControllerTest extends WebTestCase
     public function testEditAction()
     {
         $crawler = $this->client->request('POST', '/translation/edit/en_US/messages/test.key');
-        $response = $this->client->getResponse();
-        $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals(1, $crawler->filter('form')->count());
         $this->assertEquals(1, $crawler->filter('div.modal')->count());
-        $this->assertTrue($response->isSuccessful());
-        $this->assertTrue(
-            $response->headers->contains(
-                'Content-Type',
-                'text/html; charset=UTF-8'
-            )
-        );
+        $this->responseAsserts($this->client->getResponse());
     }
 
     /**
@@ -72,10 +56,20 @@ class TranslationControllerTest extends WebTestCase
     public function testCreateAction()
     {
         $crawler = $this->client->request('GET', '/translation/create');
-        $response = $this->client->getResponse();
-        $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals(1, $crawler->filter('form')->count());
         $this->assertEquals(4, $crawler->filter('input')->count());
+        $this->responseAsserts($this->client->getResponse());
+    }
+
+    /**
+     * Common asserts for response
+     *
+     * @param $response
+     */
+    private function responseAsserts($response)
+    {
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertTrue($response->isSuccessful());
         $this->assertTrue(
             $response->headers->contains(
                 'Content-Type',
