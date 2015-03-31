@@ -26,7 +26,7 @@ class TranslationControllerTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/translations');
         $response = $this->client->getResponse();
-        $this->assertEquals(1, $crawler->filter('html:contains("Translations Dashboard")')->count());
+        $this->assertEquals(1, $crawler->filter('html:contains("logo_text")')->count());
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals(5, $crawler->filter('th')->count());
         $this->assertTrue($response->isSuccessful());

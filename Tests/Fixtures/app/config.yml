@@ -1,8 +1,13 @@
 framework:
     secret:          secret
-    test: ~
+    test:            ~
     router:          { resource: "%kernel.root_dir%/routing.yml" }
+    form:            ~
+    csrf_protection: ~
+    validation:      ~
     templating:      { engines: ['twig'] }
+    session:
+            storage_id: session.storage.filesystem
 
 sleepness_uber_translation:
     memcached:

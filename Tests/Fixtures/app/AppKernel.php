@@ -15,6 +15,7 @@ class AppKernel extends Kernel
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Sleepness\UberTranslationAdminBundle\SleepnessUberTranslationAdminBundle(),
             new Sleepness\UberTranslationBundle\SleepnessUberTranslationBundle(),
             new Sleepness\UberTranslationBundle\Tests\Fixtures\TestApp\TestBundle\TestBundle(), // required for testing environment
