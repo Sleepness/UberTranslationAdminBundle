@@ -20,7 +20,7 @@ class TranslationControllerTest extends WebTestCase
     private $client;
 
     /**
-     * Test indexAction() of TranslationsController
+     * Test indexAction() of TranslationController
      */
     public function testIndexAction()
     {
@@ -31,7 +31,7 @@ class TranslationControllerTest extends WebTestCase
     }
 
     /**
-     * Test editAction() of TranslationsController
+     * Test editAction() of TranslationController
      */
     public function testEditAction()
     {
@@ -42,7 +42,7 @@ class TranslationControllerTest extends WebTestCase
     }
 
     /**
-     * Test deleteAction() of TranslationsController
+     * Test deleteAction() of TranslationController
      */
     public function testDeleteAction()
     {
@@ -51,7 +51,7 @@ class TranslationControllerTest extends WebTestCase
     }
 
     /**
-     * Test createAction() of TranslationsController
+     * Test createAction() of TranslationController
      */
     public function testCreateAction()
     {
@@ -59,6 +59,25 @@ class TranslationControllerTest extends WebTestCase
         $this->assertEquals(1, $crawler->filter('form')->count());
         $this->assertEquals(4, $crawler->filter('input')->count());
         $this->responseAsserts($this->client->getResponse());
+    }
+
+    /**
+     * Test checkAction() of TranslationController
+     */
+    public function testCheckAction()
+    {
+        $this->client->request('GET', 'translation/check?key=test.key&locale=en_US&domain=messages');
+        $response = $this->client->getResponse();
+        $arrayResponse = json_decode($response->getContent(), true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertTrue($response->isSuccessful());
+        $this->assertTrue(
+            $response->headers->contains(
+                'Content-Type',
+                'application/json'
+            )
+        );
+        $this->assertTrue($arrayResponse['isExists']);
     }
 
     /**
