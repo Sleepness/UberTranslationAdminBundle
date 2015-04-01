@@ -25,21 +25,21 @@ class TranslationController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $messageCatalogue = $this->get('memcached.messages.frontend');
+        $messagesFrontend = $this->get('memcached.messages.frontend');
         $locale = $request->query->get('locale'); // get parameters for filtering
         $domain = $request->query->get('domain');
         $key = $request->query->get('key');
         $text = $request->query->get('text');
         if (null != $locale) { // check if exists some conditions
-            $messages = $messageCatalogue->buildByLocale($locale);
+            $messages = $messagesFrontend->buildByLocale($locale);
         } elseif (null != $key) {
-            $messages = $messageCatalogue->buildByKey($key);
+            $messages = $messagesFrontend->buildByKey($key);
         } elseif (null != $domain) {
-            $messages = $messageCatalogue->buildByDomain($domain);
+            $messages = $messagesFrontend->buildByDomain($domain);
         } elseif (null != $text) {
-            $messages = $messageCatalogue->buildByText($text);
+            $messages = $messagesFrontend->buildByText($text);
         } else {
-            $messages = $messageCatalogue->getAll();
+            $messages = $messagesFrontend->getAll();
         }
         $paginator = $this->get('knp_paginator'); // paginating results
         $messages = $paginator->paginate($messages, $request->query->get('page', 1), 15);
