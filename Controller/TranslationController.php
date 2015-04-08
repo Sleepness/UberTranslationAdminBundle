@@ -69,11 +69,7 @@ class TranslationController extends Controller
         if ($message === null) {
             throw new NotFoundHttpException('You try to edit non existing translation!');
         }
-        $model = new TranslationModel();
-        $model->setLocale($localeKey);
-        $model->setDomain($_domain);
-        $model->setTranslation($message);
-        $model->setKey($_key);
+        $model = new TranslationModel($localeKey, $_domain, $_key, $message);
         $form = $this->createForm(new TranslationMessageType(), $model);
         $form->handleRequest($request);
         if ($form->isValid()) {
