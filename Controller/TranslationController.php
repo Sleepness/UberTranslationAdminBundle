@@ -30,13 +30,13 @@ class TranslationController extends Controller
         $domain = $request->query->get('domain');
         $key = $request->query->get('key');
         $text = $request->query->get('text');
-        if (null != $locale) { // check if exists some conditions
+        if (null !== $locale) { // check if exists some conditions
             $messages = $messagesFrontend->buildByLocale($locale);
-        } elseif (null != $key) {
+        } elseif (null !== $key) {
             $messages = $messagesFrontend->buildByKey($key);
-        } elseif (null != $domain) {
+        } elseif (null !== $domain) {
             $messages = $messagesFrontend->buildByDomain($domain);
-        } elseif (null != $text) {
+        } elseif (null !== $text) {
             $messages = $messagesFrontend->buildByText($text);
         } else {
             $messages = $messagesFrontend->getAll();
@@ -66,7 +66,7 @@ class TranslationController extends Controller
         $mem = $this->get('uber.memcached');
         $translations = $mem->getItem($localeKey);
         $message = $translations[$_domain][$_key];
-        if ($message == null) {
+        if ($message === null) {
             throw new NotFoundHttpException('You try to edit non existing translation!');
         }
         $model = new TranslationModel();
@@ -114,7 +114,7 @@ class TranslationController extends Controller
     {
         $mem = $this->get('uber.memcached');
         $translations = $mem->getItem($localeKey);
-        if ($translations[$_domain][$_key] == null) {
+        if ($translations[$_domain][$_key] === null) {
             throw new NotFoundHttpException('You try to delete non existing translation!');
         }
         unset($translations[$_domain][$_key]);
@@ -138,7 +138,7 @@ class TranslationController extends Controller
         if ($form->isValid()) {
             $cache = $this->get('uber.memcached');
             $translations = $cache->getItem($model->getLocale());
-            if (null == $translations) {
+            if (null === $translations) {
                 $cache->addItem($model->getLocale(), array(
                     $model->getDomain() => array(
                         $model->getKey() => $model->getTranslation(),
