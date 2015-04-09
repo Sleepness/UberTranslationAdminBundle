@@ -158,4 +158,19 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
 
         return $this->preparedTranslations;
     }
+
+    /**
+     * Replace translation by given properties
+     */
+    public function replace($_key, $_locale, $_domain, $formLocale, $formDomain, $formMessage)
+    {
+        $translations = $this->memcached->getItem($_locale);
+        unset($translations[$_domain][$_key]);
+        if ($formLocale != $_locale) {
+            $this->memcached->addItem($_locale, $translations);
+            $translations = $this->memcached->getItem($formLocale);
+        }
+        $translations[$formDomain][$_key] = $formMessage;
+        $this->memcached->addItem($formLocale, $translations);
+    }
 }
