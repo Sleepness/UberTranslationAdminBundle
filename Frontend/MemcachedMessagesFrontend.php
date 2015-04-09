@@ -11,6 +11,9 @@ use Sleepness\UberTranslationBundle\Cache\UberMemcached;
  */
 class MemcachedMessagesFrontend implements MessagesFrontendInterface
 {
+    /**
+     * @var array
+     */
     private $preparedTranslations = array();
 
     /**
@@ -161,6 +164,13 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
 
     /**
      * Replace translation by given properties
+     *
+     * @param $_key - defined translation key
+     * @param $_locale - defined translation locale
+     * @param $_domain - defined translation domain
+     * @param $formLocale - changed translation locale
+     * @param $formDomain - changed translation domain
+     * @param $formMessage - changed translation message
      */
     public function replace($_key, $_locale, $_domain, $formLocale, $formDomain, $formMessage)
     {
