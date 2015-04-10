@@ -11,6 +11,9 @@ use Sleepness\UberTranslationBundle\Cache\UberMemcached;
  */
 class MemcachedMessagesFrontend implements MessagesFrontendInterface
 {
+    /**
+     * @var array
+     */
     private $preparedTranslations = array();
 
     /**
@@ -157,5 +160,27 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         }
 
         return $this->preparedTranslations;
+    }
+
+    /**
+     * Replace translation by given properties
+     *
+     * @param $_key - defined translation key
+     * @param $_locale - defined translation locale
+     * @param $_domain - defined translation domain
+     * @param $formLocale - changed translation locale
+     * @param $formDomain - changed translation domain
+     * @param $formMessage - changed translation message
+     */
+    public function replace($_key, $_locale, $_domain, $formLocale, $formDomain, $formMessage)
+    {
+        $translations = $this->memcached->getItem($_locale);
+        unset($translations[$_domain][$_key]);
+        if ($formLocale != $_locale) {
+            $this->memcached->addItem($_locale, $translations);
+            $translations = $this->memcached->getItem($formLocale);
+        }
+        $translations[$formDomain][$_key] = $formMessage;
+        $this->memcached->addItem($formLocale, $translations);
     }
 }

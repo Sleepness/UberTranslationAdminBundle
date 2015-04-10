@@ -32,6 +32,22 @@ class TranslationModel
     private $key;
 
     /**
+     * TranslationModel constructor
+     *
+     * @param string $locale
+     * @param string $domain
+     * @param string $key
+     * @param string $translation
+     */
+    public function __construct($locale = null, $domain = null, $key = null, $translation = null)
+    {
+        $this->locale = $locale;
+        $this->domain = $domain;
+        $this->key = $key;
+        $this->translation = $translation;
+    }
+
+    /**
      * @param $locale
      * @return $this
      */

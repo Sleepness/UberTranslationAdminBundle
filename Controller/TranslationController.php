@@ -69,24 +69,15 @@ class TranslationController extends Controller
         if ($message === null) {
             throw new NotFoundHttpException('You try to edit non existing translation!');
         }
-        $model = new TranslationModel();
-        $model->setLocale($localeKey);
-        $model->setDomain($_domain);
-        $model->setTranslation($message);
-        $model->setKey($_key);
+        $model = new TranslationModel($localeKey, $_domain, $_key, $message);
         $form = $this->createForm(new TranslationMessageType(), $model);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $formLocaleKey = $model->getLocale();
+            $formLocale = $model->getLocale();
             $formDomain = $model->getDomain();
             $formMessage = $model->getTranslation();
-            unset($translations[$_domain][$_key]);
-            if ($formLocaleKey != $localeKey) {
-                $mem->addItem($localeKey, $translations);
-                $translations = $mem->getItem($formLocaleKey);
-            }
-            $translations[$formDomain][$_key] = $formMessage;
-            $mem->addItem($formLocaleKey, $translations);
+            $messagesFrontend = $this->get('memcached.messages.frontend');
+            $messagesFrontend->replace($_key, $localeKey, $_domain, $formLocale, $formDomain, $formMessage);
             $this->get('session')->getFlashBag()->add('translation_edited', 'edit_success');
 
             return $this->redirect($this->generateUrl('sleepness_translation_dashboard'));

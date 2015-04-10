@@ -24,7 +24,7 @@
         "symfony/framework-bundle": "~2.3",
         "symfony/twig-bundle": "~2.3",
         "knplabs/knp-paginator-bundle": "~2.4",
-        "sleepness/uber-translation-bundle": "dev-develop"
+        "sleepness/uber-translation-bundle": "1.0.*@dev"
     },
     "require-dev": {
         "symfony/finder": "~2.6",
@@ -38,5 +38,10 @@
     },
     "autoload" : {
         "psr-4" : { "Sleepness\\UberTranslationAdminBundle\\" : "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "1.0.x-dev"
+        }
     }
 }

@@ -81,6 +81,19 @@ class MemcachedMessagesFrontendTest extends WebTestCase
     }
 
     /**
+     * Test replace translation
+     */
+    public function testReplace()
+    {
+        $this->messagesFrontend->replace('key.foo', 'en_US', 'messages', 'en_XX', 'newmessages', 'new.value.Foo');
+        $definedTransaltions = $this->uberMemcached->getItem('en_US');
+        $newTransaltions = $this->uberMemcached->getItem('en_XX');
+        $this->assertEquals('new.value.Foo', $newTransaltions['newmessages']['key.foo']);
+        $this->assertArrayNotHasKey('key.foo', $definedTransaltions['messages']);
+        $this->assertArrayNotHasKey('newmessages', $definedTransaltions);
+    }
+
+    /**
      * Set up fixtures for testing
      */
     public function setUp()
@@ -99,6 +112,7 @@ class MemcachedMessagesFrontendTest extends WebTestCase
     public function tearDown()
     {
         $this->uberMemcached->deleteItem('en_US');
+        $this->uberMemcached->deleteItem('en_XX');
     }
 
     /**
