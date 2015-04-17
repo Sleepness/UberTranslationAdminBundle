@@ -22,11 +22,18 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
     private $memcached;
 
     /**
-     * @param \Sleepness\UberTranslationBundle\Cache\UberMemcached $memcached
+     * @var array
      */
-    public function __construct(UberMemcached $memcached)
+    private $supportedLocales;
+
+    /**
+     * @param \Sleepness\UberTranslationBundle\Cache\UberMemcached $memcached
+     * @param $supportedLocales
+     */
+    public function __construct(UberMemcached $memcached, $supportedLocales)
     {
         $this->memcached = $memcached;
+        $this->supportedLocales = $supportedLocales;
     }
 
     /**
@@ -68,7 +75,7 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
      */
     public function buildByDomain($domain)
     {
-        $locales = $this->memcached->getAllKeys();
+        $locales = $this->supportedLocales;
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
@@ -92,7 +99,7 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
      */
     public function buildByKey($keyYml)
     {
-        $locales = $this->memcached->getAllKeys();
+        $locales = $this->supportedLocales;
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
@@ -116,7 +123,7 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
      */
     public function buildByText($text)
     {
-        $locales = $this->memcached->getAllKeys();
+        $locales = $this->supportedLocales;
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
@@ -140,7 +147,7 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
      */
     public function getAll()
     {
-        $locales = $this->memcached->getAllKeys();
+        $locales = $this->supportedLocales;
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
