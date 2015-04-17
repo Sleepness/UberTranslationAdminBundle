@@ -51,12 +51,11 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
     {
         if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
             $translations = $this->memcached->getItem($locale);
-            if (!$translations) {
-                return array();
-            }
-            foreach ($translations as $memcacheDomain => $messages) {
-                foreach ($messages as $ymlKey => $value) {
-                    $this->prepareTranslations($memcacheDomain, $ymlKey, $value, $locale);
+            if ($translations) {
+                foreach ($translations as $memcacheDomain => $messages) {
+                    foreach ($messages as $ymlKey => $value) {
+                        $this->prepareTranslations($memcacheDomain, $ymlKey, $value, $locale);
+                    }
                 }
             }
         }
@@ -73,13 +72,12 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
-                if (!$translations) {
-                    return array();
-                }
-                foreach ($translations as $memcacheDomain => $messages) {
-                    if ($domain == $memcacheDomain) {
-                        foreach ($messages as $ymlKey => $value) {
-                            $this->prepareTranslations($domain, $ymlKey, $value, $locale);
+                if ($translations) {
+                    foreach ($translations as $memcacheDomain => $messages) {
+                        if ($domain == $memcacheDomain) {
+                            foreach ($messages as $ymlKey => $value) {
+                                $this->prepareTranslations($domain, $ymlKey, $value, $locale);
+                            }
                         }
                     }
                 }
@@ -98,13 +96,12 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
-                if (!$translations) {
-                    return array();
-                }
-                foreach ($translations as $memcacheDomain => $messages) {
-                    foreach ($messages as $ymlKey => $value) {
-                        if ($ymlKey == $keyYml) {
-                            $this->prepareTranslations($memcacheDomain, $keyYml, $value, $locale);
+                if ($translations) {
+                    foreach ($translations as $memcacheDomain => $messages) {
+                        foreach ($messages as $ymlKey => $value) {
+                            if ($ymlKey == $keyYml) {
+                                $this->prepareTranslations($memcacheDomain, $keyYml, $value, $locale);
+                            }
                         }
                     }
                 }
@@ -123,13 +120,12 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
-                if (!$translations) {
-                    return array();
-                }
-                foreach ($translations as $memcacheDomain => $messages) {
-                    foreach ($messages as $ymlKey => $value) {
-                        if (stripos($value, $text) !== false) {
-                            $this->prepareTranslations($memcacheDomain, $ymlKey, $value, $locale);
+                if ($translations) {
+                    foreach ($translations as $memcacheDomain => $messages) {
+                        foreach ($messages as $ymlKey => $value) {
+                            if (stripos($value, $text) !== false) {
+                                $this->prepareTranslations($memcacheDomain, $ymlKey, $value, $locale);
+                            }
                         }
                     }
                 }
@@ -148,12 +144,11 @@ class MemcachedMessagesFrontend implements MessagesFrontendInterface
         foreach ($locales as $key => $locale) {
             if (preg_match('/^[a-z]{2}$/', $locale) || preg_match('/^[a-z]{2}_[A-Z]{2}$/', $locale)) {
                 $translations = $this->memcached->getItem($locale);
-                if (!$translations) {
-                    return array();
-                }
-                foreach ($translations as $memcacheDomain => $messages) {
-                    foreach ($messages as $ymlKey => $value) {
-                        $this->prepareTranslations($memcacheDomain, $ymlKey, $value, $locale);
+                if ($translations) {
+                    foreach ($translations as $memcacheDomain => $messages) {
+                        foreach ($messages as $ymlKey => $value) {
+                            $this->prepareTranslations($memcacheDomain, $ymlKey, $value, $locale);
+                        }
                     }
                 }
             }
