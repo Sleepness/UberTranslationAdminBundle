@@ -1,10 +1,13 @@
 {
     "name" : "sleepness/uber-translation-admin-bundle",
     "type" : "symfony-bundle",
-    "description" : "Symfony UberTranslationAdminBundle (Sleepness Team)",
+    "description" : "Provides an admin section for SleepnessUberTranslationBundle to ease your translations management",
     "keywords" : [
         "translation",
-        "admin-dashboard"
+        "admin section",
+        "Symfony2",
+        "ui",
+        "interface"
     ],
     "homepage": "http://sleepness.github.io/",
     "license": "MIT",
