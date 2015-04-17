@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Sleepness/UberTranslationAdminBundle.svg?branch=develop)](https://travis-ci.org/Sleepness/UberTranslationAdminBundle)  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/?branch=develop) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/298e43b2-f277-419f-8bf3-9e4556a60732/mini.png)](https://insight.sensiolabs.com/projects/298e43b2-f277-419f-8bf3-9e4556a60732)
+[![Build Status](https://travis-ci.org/Sleepness/UberTranslationAdminBundle.svg?branch=develop)](https://travis-ci.org/Sleepness/UberTranslationAdminBundle)  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Sleepness/UberTranslationAdminBundle/?branch=develop) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4e7519e2-38c3-47b2-acd0-c2b77abdf8b5/mini.png)](https://insight.sensiolabs.com/projects/4e7519e2-38c3-47b2-acd0-c2b77abdf8b5)
 
 UberTranslationAdminBundle
 =====================
