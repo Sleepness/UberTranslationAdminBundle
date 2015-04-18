@@ -13,4 +13,4 @@ sleepness_uber_translation:
     memcached:
         host: localhost
         port: 11211
-    supported_locales: [en, uk]
+    supported_locales: [en_US]
