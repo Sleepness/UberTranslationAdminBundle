@@ -25,7 +25,6 @@ class TranslationControllerTest extends WebTestCase
     public function testIndexAction()
     {
         $crawler = $this->client->request('GET', '/translations');
-        $this->assertEquals(1, $crawler->filter('html:contains("logo_text")')->count());
         $this->assertEquals(5, $crawler->filter('th')->count());
         $this->responseAsserts($this->client->getResponse());
     }
