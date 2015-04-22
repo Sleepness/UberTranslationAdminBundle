@@ -1,0 +1,61 @@
+logo_text: Traductions Dashboard
+
+add_trans_button: Ajouter nouvelle traduction
+
+main_text: Gestion des traductions de votre application!
+
+translation_form:
+    create_title: Créer traduction
+    edit_title: Modifier la traduction
+    key: Clé
+    locale: Lieu:
+    domain: Domaine:
+    translation: Traduction:
+    save: Enregistrer
+
+table:
+    total: Total des traductions
+    credentials: Pouvoirs de traduction
+    translations: Traductions
+    credentials: Propriétés de traduction
+    locale: Lieu
+    domain: Domaine
+    key: Clé
+    message: Message
+    actions: Actes
+
+filters:
+    search:
+        by_key: Recherche par clé
+        by_domain: Recherche par domaine
+        by_text: Recherche par texte
+    locales: Locales
+
+delete_modal:
+    approve: Oui
+    reject: Aucun
+    title: Supprimer la traduction
+    alert_message: Attention! Si vous supprimez cette traduction, certaines de vos pages pourrait être cassé!
+    confirm_message: Êtes-vous sûr de vouloir supprimer cette traduction?
+
+edit_modal:
+    approve: Oui
+    reject: Aucun
+    title: Modifier la traduction
+    check_existence: Traduction avec une telle clé, locale et gestion de domaine existe déjà! Remplacer?
+    confirm_message: Etes-vous sûr que vous voulez modifier les propriétés de cette traduction?
+    changed_locale: Changer locale:
+    changed_domain: Changer domaine:
+    changed_translation: Changer traduction:
+    from: à partir de
+    to: à
+
+creation_failed: Traduction avec cette clé existe déjà
+
+delete_success: Traduction supprimé avec succès
+
+edit_success: Translation changer successfully
+
+pagination:
+    next: Suivant
+    previous: Précédent
