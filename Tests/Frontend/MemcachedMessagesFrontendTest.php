@@ -39,7 +39,6 @@ class MemcachedMessagesFrontendTest extends WebTestCase
     public function testBuildByDomain()
     {
         $preparedTranslations = $this->messagesFrontend->buildByDomain('messages');
-
         $this->assertEquals('key.hello', $preparedTranslations[0]['keyYml']);
         $this->assertEquals('value.Hello', $preparedTranslations[0]['messageProps']['messageText']);
         $this->assertArrayNotHasKey('validators', $preparedTranslations);
@@ -51,7 +50,6 @@ class MemcachedMessagesFrontendTest extends WebTestCase
     public function testBuildByKey()
     {
         $preparedTranslations = $this->messagesFrontend->buildByKey('key.not.blank');
-
         $this->assertEquals('key.not.blank', $preparedTranslations[0]['keyYml']);
         $this->assertEquals('value.NotBlank', $preparedTranslations[0]['messageProps']['messageText']);
         $this->assertArrayNotHasKey('messages', $preparedTranslations);
@@ -63,7 +61,6 @@ class MemcachedMessagesFrontendTest extends WebTestCase
     public function testBuildByText()
     {
         $preparedTranslations = $this->messagesFrontend->buildByText('value.MaxLength');
-
         $this->assertEquals('key.max.length', $preparedTranslations[0]['keyYml']);
         $this->assertEquals('value.MaxLength', $preparedTranslations[0]['messageProps']['messageText']);
         $this->assertArrayNotHasKey('messages', $preparedTranslations);
@@ -75,7 +72,6 @@ class MemcachedMessagesFrontendTest extends WebTestCase
     public function testGetAll()
     {
         $preparedTranslations = $this->messagesFrontend->getAll();
-
         $this->assertEquals('key.max.length', $preparedTranslations[3]['keyYml']);
         $this->assertEquals('value.MaxLength', $preparedTranslations[3]['messageProps']['messageText']);
     }
@@ -102,8 +98,7 @@ class MemcachedMessagesFrontendTest extends WebTestCase
         $container = static::$kernel->getContainer();
         $this->uberMemcached = $container->get('uber.memcached');
         $this->messagesFrontend = $container->get('memcached.messages.frontend');
-        $values = $this->getMessagesArray();
-        $this->uberMemcached->addItem('en_US', $values);
+        $this->uberMemcached->addItem('en_US', $this->getMessagesArray());
     }
 
     /**
