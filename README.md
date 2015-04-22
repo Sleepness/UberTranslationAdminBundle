@@ -8,11 +8,10 @@ This Bundle provides an admin section for [`UberTranslationBundle`](https://gith
 Features include:
 
 - view all stored translations in Memcached
-- search for Memcached translation by given: locale, domain, key or text of translation
-- edit Memcached translations
-- delete Memcached translations
-- language support (English, German, Ukrainian, Russian)
-- unit tested
+- search in Memcached for translation by given: locale, domain, key or text of translation
+- edit translations in Memcached
+- delete translations from Memcached
+- multi-language interface support (English, German, Ukrainian, Russian, French)
 
 Documentation
 -------------

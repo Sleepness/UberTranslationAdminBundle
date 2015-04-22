@@ -120,10 +120,10 @@ class MemcachedMessagesFrontendTest extends WebTestCase
         return array(
             'messages' => array(
                 'key.hello' => 'value.Hello',
-                'key.foo' => 'value.Foo',
+                'key.foo'   => 'value.Foo',
             ),
             'validators' => array(
-                'key.not.blank' => 'value.NotBlank',
+                'key.not.blank'  => 'value.NotBlank',
                 'key.max.length' => 'value.MaxLength',
             ),
         );
