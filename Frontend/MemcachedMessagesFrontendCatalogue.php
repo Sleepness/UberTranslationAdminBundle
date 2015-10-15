@@ -9,7 +9,7 @@ use Sleepness\UberTranslationBundle\Cache\UberMemcached;
  *
  * @author Viktor Novikov <viktor.novikov95@gmail.com>
  */
-class MemcachedMessagesFrontend implements MessagesFrontendInterface
+class MemcachedMessagesFrontendCatalogue implements MessagesFrontendCatalogueInterface
 {
     /**
      * @var array

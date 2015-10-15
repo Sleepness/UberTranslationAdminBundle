@@ -6,8 +6,8 @@
 
     <services>
 
-        <service id="memcached.messages.frontend"
-                 class="Sleepness\UberTranslationAdminBundle\Frontend\MemcachedMessagesFrontend">
+        <service id="memcached.messages.frontend.catalogue"
+                 class="Sleepness\UberTranslationAdminBundle\Frontend\MemcachedMessagesFrontendCatalogue">
             <argument type="service" id="uber.memcached"/>
             <argument>%sleepness_uber_translation.supported_locales%</argument>
         </service>

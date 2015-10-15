@@ -7,7 +7,7 @@ namespace Sleepness\UberTranslationAdminBundle\Frontend;
  *
  * @author Viktor Novikov <viktor.novikov95@gmail.com>
  */
-interface MessagesFrontendInterface
+interface MessagesFrontendCatalogueInterface
 {
     /**
      * Prepare translations to be displayed

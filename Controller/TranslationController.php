@@ -25,7 +25,7 @@ class TranslationController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $messagesFrontend = $this->get('memcached.messages.frontend');
+        $messagesFrontend = $this->get('memcached.messages.frontend.catalogue');
         $locale = $request->query->get('locale'); // get parameters for filtering
         $domain = $request->query->get('domain');
         $key = $request->query->get('key');
@@ -76,7 +76,7 @@ class TranslationController extends Controller
             $formLocale = $model->getLocale();
             $formDomain = $model->getDomain();
             $formMessage = $model->getTranslation();
-            $messagesFrontend = $this->get('memcached.messages.frontend');
+            $messagesFrontend = $this->get('memcached.messages.frontend.catalogue');
             $messagesFrontend->replace($_key, $localeKey, $_domain, $formLocale, $formDomain, $formMessage);
             $this->get('session')->getFlashBag()->add('translation_edited', 'edit_success');
 

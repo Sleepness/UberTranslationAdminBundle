@@ -5,14 +5,14 @@ namespace Sleepness\UberTranslationAdminBundle\Tests\Frontend;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Test MemcachedMessagesFrontend methods and cases
+ * Test MemcachedMessagesFrontendCatalogue methods and cases
  *
  * @author Viktor Novikov <viktor.novikov95@gmail.com>
  */
-class MemcachedMessagesFrontendTest extends WebTestCase
+class MemcachedMessagesFrontendCatalogueTest extends WebTestCase
 {
     /**
-     * @var \Sleepness\UberTranslationAdminBundle\Frontend\MemcachedMessagesFrontend;
+     * @var \Sleepness\UberTranslationAdminBundle\Frontend\MemcachedMessagesFrontendCatalogue;
      */
     private $messagesFrontend;
 
@@ -97,7 +97,7 @@ class MemcachedMessagesFrontendTest extends WebTestCase
         static::bootKernel(array());
         $container = static::$kernel->getContainer();
         $this->uberMemcached = $container->get('uber.memcached');
-        $this->messagesFrontend = $container->get('memcached.messages.frontend');
+        $this->messagesFrontend = $container->get('memcached.messages.frontend.catalogue');
         $this->uberMemcached->addItem('en_US', $this->getMessagesArray());
     }
 
