@@ -164,12 +164,8 @@ class TranslationController extends Controller
         $domain = $request->query->get('domain');
         $locale = $request->query->get('locale');
         $translations = $this->get('uber.memcached')->getItem($locale);
-        if ($translations && array_key_exists($domain, $translations) && array_key_exists($key, $translations[$domain])) {
+        $exists = ($translations && array_key_exists($domain, $translations) && array_key_exists($key, $translations[$domain])) ? true : false;
 
-            return new JsonResponse(array('isExists' => true));
-        } else {
-
-            return new JsonResponse(array('isExists' => false));
-        }
+        return new JsonResponse(array('isExists' => $exists));
     }
 }
