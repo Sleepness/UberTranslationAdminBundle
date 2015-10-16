@@ -3,21 +3,21 @@
  */
 (function ($) {
     // Wrap jQuery objects into vars to make sure, that we initialize all objects once
-    var $changed_translation          = $("#changed_translation"),
-        $changed_locale               = $("#changed_locale"),
-        $changed_domain               = $("#changed_domain"),
-        $translation_form_locale      = $("#translation_form_locale"),
-        $translation_form_key         = $("#translation_form_key"),
-        $translation_form_domain      = $("#translation_form_domain"),
+    var $changed_translation = $("#changed_translation"),
+        $changed_locale = $("#changed_locale"),
+        $changed_domain = $("#changed_domain"),
+        $translation_form_locale = $("#translation_form_locale"),
+        $translation_form_key = $("#translation_form_key"),
+        $translation_form_domain = $("#translation_form_domain"),
         $translation_form_translation = $("#translation_form_translation"),
-        $check_existence              = $("#check_existence"),
-        $confirm_message              = $("#confirm_message"),
-        $trans_loading                = $('#trans_loading');
+        $check_existence = $("#check_existence"),
+        $confirm_message = $("#confirm_message"),
+        $trans_loading = $('#trans_loading');
 
     var definedMessage = $translation_form_translation.val(),
-        definedKey     = $translation_form_key.val(),
-        definedLocale  = $translation_form_locale.val(),
-        definedDomain  = $translation_form_domain.val();
+        definedKey = $translation_form_key.val(),
+        definedLocale = $translation_form_locale.val(),
+        definedDomain = $translation_form_domain.val();
 
     $("#btn_edit_translation").on('click', function () {
         $check_existence.hide();

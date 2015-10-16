@@ -26,21 +26,30 @@ class TranslationController extends Controller
     public function indexAction(Request $request)
     {
         $messagesFrontend = $this->get('memcached.messages.frontend.catalogue');
+
         $locale = $request->query->get('locale'); // get parameters for filtering
         $domain = $request->query->get('domain');
-        $key = $request->query->get('key');
-        $text = $request->query->get('text');
-        if (null !== $locale) { // check if exists some conditions
+        $key    = $request->query->get('key');
+        $text   = $request->query->get('text');
+
+        $messages = $messagesFrontend->getAll();
+
+        if (null !== $locale) {
             $messages = $messagesFrontend->buildByLocale($locale);
-        } elseif (null !== $key) {
-            $messages = $messagesFrontend->buildByKey($key);
-        } elseif (null !== $domain) {
-            $messages = $messagesFrontend->buildByDomain($domain);
-        } elseif (null !== $text) {
-            $messages = $messagesFrontend->buildByText($text);
-        } else {
-            $messages = $messagesFrontend->getAll();
         }
+
+        if (null !== $key) {
+            $messages = $messagesFrontend->buildByKey($key);
+        }
+
+        if (null !== $domain) {
+            $messages = $messagesFrontend->buildByDomain($domain);
+        }
+
+        if (null !== $text) {
+            $messages = $messagesFrontend->buildByText($text);
+        }
+
         $paginator = $this->get('knp_paginator'); // paginating results
         $messages = $paginator->paginate($messages, $request->query->get('page', 1), 15);
         $locales = $this->container->getParameter('sleepness_uber_translation.supported_locales');
@@ -160,9 +169,10 @@ class TranslationController extends Controller
      */
     public function checkAction(Request $request)
     {
-        $key = $request->query->get('key');
+        $key    = $request->query->get('key');
         $domain = $request->query->get('domain');
         $locale = $request->query->get('locale');
+
         $translations = $this->get('uber.memcached')->getItem($locale);
         $exists = ($translations && array_key_exists($domain, $translations) && array_key_exists($key, $translations[$domain])) ? true : false;
 
