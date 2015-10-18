@@ -4,10 +4,13 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="sleepness.uber.memcached.messages_frontend.class">Sleepness\UberTranslationAdminBundle\Frontend\MemcachedMessagesFrontendCatalogue</parameter>
+    </parameters>
+
     <services>
 
-        <service id="memcached.messages.frontend.catalogue"
-                 class="Sleepness\UberTranslationAdminBundle\Frontend\MemcachedMessagesFrontendCatalogue">
+        <service id="memcached.messages.frontend.catalogue" class="%sleepness.uber.memcached.messages_frontend.class%">
             <argument type="service" id="uber.memcached"/>
             <argument>%sleepness_uber_translation.supported_locales%</argument>
         </service>
