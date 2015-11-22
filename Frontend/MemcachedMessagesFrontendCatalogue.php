@@ -2,7 +2,7 @@
 
 namespace Sleepness\UberTranslationAdminBundle\Frontend;
 
-use Sleepness\UberTranslationBundle\Cache\UberMemcached;
+use Sleepness\UberTranslationBundle\Storage\UberMemcached;
 
 /**
  * Prepare messages for output from Memcached

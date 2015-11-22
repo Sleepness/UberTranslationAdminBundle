@@ -17,7 +17,7 @@ class MemcachedMessagesFrontendCatalogueTest extends WebTestCase
     private $messagesFrontend;
 
     /**
-     * @var \Sleepness\UberTranslationBundle\Cache\UberMemcached;
+     * @var \Sleepness\UberTranslationBundle\Storage\UberMemcached;
      */
     private $uberMemcached;
 
